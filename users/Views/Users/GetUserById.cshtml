@@ -1,0 +1,90 @@
+﻿@model users.Models.Users
+
+@{
+    ViewBag.Title = "GetUserById";
+}
+
+<h2>GetUserById</h2>
+
+<div>
+    <h4>Users</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Designation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Roles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Roles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportingManager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportingManager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Approver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVendor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVendor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
