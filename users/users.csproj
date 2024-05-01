@@ -125,9 +125,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\GetUserById.cshtml" />
-    <Content Include="Views\Users\CreateUser.cshtml" />
     <Content Include="Views\Users\DeleteUser.cshtml" />
     <Content Include="Views\Users\EditUser.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

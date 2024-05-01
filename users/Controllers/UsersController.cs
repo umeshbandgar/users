@@ -10,19 +10,21 @@ namespace users.Controllers
 {
     public class UsersController : Controller
     {
-        UserDbcontext dbcontext=new UserDbcontext();
+        UserDbcontext _dbcontext = new UserDbcontext();
+           
+
 
         // GET: Users
         public ActionResult Index()
         {
-            List<Users> users = dbcontext.Users.ToList();
+            List<Users> users = _dbcontext.Users.ToList();
             return View(users);
         }
 
         [HttpGet]
         public ActionResult GetUserById(int id)
         {
-            Users user = dbcontext.Users.Find(id);
+            Users user = _dbcontext.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -30,26 +32,38 @@ namespace users.Controllers
             return View(user);
         }
         [HttpGet]
-        public ActionResult CreateUser()
+        public ActionResult Create()
         {
-            return View();
+
+            return View( new Users());
         }
 
         [HttpPost]
-        public ActionResult CreateUser(Users newUser)
+        public ActionResult Create(Users newusers)
         {
-            if (ModelState.IsValid)
+
+
+            try
             {
-                dbcontext.Users.Add(newUser);
-                dbcontext.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    UserDbcontext db = new UserDbcontext();
+                    db.Users.Add(newusers);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View();
             }
-            return View(newUser);
+            catch
+            {
+                return View();
+            }
         }
+
         [HttpGet]
         public ActionResult EditUser(int id)
         {
-            Users user = dbcontext.Users.Find(id);
+            Users user = _dbcontext.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -62,8 +76,8 @@ namespace users.Controllers
         {
             if (ModelState.IsValid)
             {
-                dbcontext.Entry(updatedUser).State = EntityState.Modified;
-                dbcontext.SaveChanges();
+                _dbcontext.Entry(updatedUser).State = EntityState.Modified;
+                _dbcontext.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(updatedUser);
@@ -71,7 +85,7 @@ namespace users.Controllers
         [HttpGet]
         public ActionResult DeleteUser(int id)
         {
-            Users user = dbcontext.Users.Find(id);
+            Users user = _dbcontext.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -82,13 +96,13 @@ namespace users.Controllers
         [HttpPost, ActionName("DeleteUser")]
         public ActionResult ConfirmDeleteUser(int id)
         {
-            Users user = dbcontext.Users.Find(id);
+            Users user = _dbcontext.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
-            dbcontext.Users.Remove(user);
-            dbcontext.SaveChanges();
+            _dbcontext.Users.Remove(user);
+            _dbcontext.SaveChanges();
             return RedirectToAction("Index");
         }
 
